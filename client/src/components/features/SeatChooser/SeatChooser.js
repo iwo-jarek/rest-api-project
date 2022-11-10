@@ -20,7 +20,7 @@ class SeatChooser extends React.Component {
   };
 
   prepareSeat = (seatId) => {
-    const { chosenSeat, updateSeat } = this.props;
+    const { chosenSeat, addSeat } = this.props;
     const { isTaken } = this;
 
     if (seatId === chosenSeat)
@@ -42,7 +42,7 @@ class SeatChooser extends React.Component {
           color="primary"
           className="seats__seat"
           outline
-          onClick={(e) => updateSeat(e, seatId)}
+          onClick={(e) => addSeat(e, seatId)}
         >
           {seatId}
         </Button>
