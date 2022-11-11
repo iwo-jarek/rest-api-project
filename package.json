@@ -13,6 +13,7 @@
     "uuidv4": "^6.2.13"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "cd client && yarn install && yarn build"
   }
 }
