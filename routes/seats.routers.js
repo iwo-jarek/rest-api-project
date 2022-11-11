@@ -24,32 +24,30 @@ router.route("/seats").post((req, res) => {
     email: email,
   };
 
-  if (db.seats.some((check) => check.seat == seat && check.day == day)) {
+  if (db.seats.some((check) => check.seat === seat && check.day === day)) {
     return res.status(404).json({ message: "The slot is already taken" });
   } else {
     db.seats.push(postSeats);
-    res.json(message);
+    return res.json(message);
   }
 });
 
 router.route("/seats/:id").put((req, res) => {
-  const { performer, genre, price, day, image } = req.body;
-  const userId = db.seats.find((userId) => userId.id == req.params.id);
-  if (userId) {
-    userId.performer = performer;
-    userId.genre = genre;
-    userId.price = price;
-    userId.day = day;
-    userId.image = image;
-
-    res.json(userId);
+  const { day, seat, client, email } = req.body;
+  const newSeats = db.seats.find((userId) => userId.id == req.params.id);
+  if (seat) {
+    (newSeats.day = day),
+      (newSeats.seat = seat),
+      (newSeats.client = client),
+      (newSeats.email = email),
+      res.json(message);
   }
 });
 
 router.route("/seats/:id").delete((req, res) => {
-  const deleteSeats = db.seats.find((userId) => userId.id == req.params.id);
+  const newSeats = db.seats.find((userId) => userId.id == req.params.id);
 
-  const indexOf = db.seats.indexOf(deleteSeats);
+  const indexOf = db.seats.indexOf(newSeats);
   db.seats.splice(indexOf, 1);
 
   res.json(message);

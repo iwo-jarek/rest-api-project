@@ -7,10 +7,10 @@ class SeatChooser extends React.Component {
   componentDidMount() {
     const { loadSeats } = this.props;
     loadSeats();
-    //   this.interval = setInterval(() => loadSeats(), 2000);
-    // }
-    // componentWillUnmount() {
-    //   clearInterval(this.interval);
+    this.interval = setInterval(() => loadSeats(), 20000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   isTaken = (seatId) => {
@@ -20,7 +20,7 @@ class SeatChooser extends React.Component {
   };
 
   prepareSeat = (seatId) => {
-    const { chosenSeat, addSeat } = this.props;
+    const { chosenSeat, updateSeat } = this.props;
     const { isTaken } = this;
 
     if (seatId === chosenSeat)
@@ -42,7 +42,7 @@ class SeatChooser extends React.Component {
           color="primary"
           className="seats__seat"
           outline
-          onClick={(e) => addSeat(e, seatId)}
+          onClick={(e) => updateSeat(e, seatId)}
         >
           {seatId}
         </Button>
