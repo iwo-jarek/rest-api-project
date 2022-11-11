@@ -6,11 +6,11 @@ import "./SeatChooser.scss";
 class SeatChooser extends React.Component {
   componentDidMount() {
     const { loadSeats } = this.props;
-    this.interval = setInterval(() => loadSeats(), 2000);
     loadSeats();
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
+    //   this.interval = setInterval(() => loadSeats(), 2000);
+    // }
+    // componentWillUnmount() {
+    //   clearInterval(this.interval);
   }
 
   isTaken = (seatId) => {
