@@ -14,11 +14,6 @@ router.route("/seats/:id").get((req, res) => {
   res.json(user);
 });
 
-router.route("/seats/random").get((req, res) => {
-  const randomSeat = db.seats[Math.floor(Math.random() * db.seats.length)];
-  res.json(randomSeat);
-});
-
 router.route("/seats").post((req, res) => {
   const { day, seat, client, email } = req.body;
   const postSeats = {
